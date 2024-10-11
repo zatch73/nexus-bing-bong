@@ -1,0 +1,26 @@
+{
+  "name": "nexus-bing-bong",
+  "version": "1.0.0",
+  "description": "- feat: A new feature for the user. - fix: A bug fix for the user. - docs: Documentation only changes. - style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.). - refactor: A code change that neither fixes a bug nor adds a feature. - test: Adding missing tests or correcting existing tests. - chore: Changes to the build process or auxiliary tools and libraries such as documentation generation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "start": "node dist/backend/index.js",
+    "dev": "nodemon src/backend/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.5",
+    "concurrently": "^9.0.1",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
