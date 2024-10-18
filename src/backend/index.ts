@@ -7,12 +7,22 @@ const app: Express = express();
 const port = process.env.PORT || 3000;
 
 const hostname = os.arch();
+
 const serversRouter = require("./routes/servers-router");
+
+const User = require('./config/database')
 
 app.use("/servers", serversRouter);
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Express + TypeScript Server 2 "+hostname);
+app.get("/", async (req: Request, res: Response) => {
+  
+  const jane = await User.create({
+    username: 'janedoe',
+    birthday: new Date(1980, 6, 20),
+  });
+  
+  const users = await User.findAll();
+  res.send(users);
 });
 
 app.listen(port, () => {
