@@ -1,33 +1,26 @@
-import { Sequelize, DataTypes } from 'sequelize';
-
-
-const User = sequelize.define('User', {
-  username: DataTypes.STRING,
-  birthday: DataTypes.DATE,
-});
-
-(async function (){ 
-    await sequelize.sync();
-})();
-
-module.exports = User;
+import { Sequelize } from 'sequelize';
 
 class Database {
     private static instance: Database | null = null;
+    private sequelize: Sequelize;
 
-
-    constructor(){
-        const sequelize = new Sequelize({
+    private constructor() {
+        this.sequelize = new Sequelize({
             dialect: 'sqlite',
             storage: 'data/database.sqlite'
         });
     }
 
-    static getInstance() : Database {
-        if(Database.instance == null){
+    public static getInstance(): Database {
+        if (Database.instance === null) {
             Database.instance = new Database();
         }
         return Database.instance;
     }
 
+    public getConnection(): Sequelize {
+        return this.sequelize;
+    }
 }
+
+export default Database;
